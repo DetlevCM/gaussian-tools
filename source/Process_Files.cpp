@@ -23,7 +23,8 @@ void ProcessFile(vector< OptPoints >& GaussianData ,ifstream& DataInputFile)
 
 		getline(DataInputFile,line);
 
-		size_t found = line.find("Input orientation:");
+		//size_t found = line.find("Input orientation:");
+		size_t found = line.find("Standard orientation:");
 
 		if (found!=string::npos) // We have found a Z-Matrix
 		{
