@@ -6,4 +6,4 @@ Debug/
 Debug/*.exe
 .cproject
 .project
-.settings/*
+.settings/
