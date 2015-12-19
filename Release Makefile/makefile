@@ -8,6 +8,9 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include source/output/subdir.mk
+-include source/input/subdir.mk
+-include source/calc/subdir.mk
 -include source/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -38,19 +41,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: g09\ atom\ distance.exe
+all: gaussian\ tools.exe
 
 # Tool invocations
-g09\ atom\ distance.exe: $(OBJS) $(USER_OBJS)
+gaussian\ tools.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "g09 atom distance.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "gaussian tools.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) "g09 atom distance.exe"
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) "gaussian tools.exe"
 	-@echo ' '
 
 .PHONY: all clean dependents

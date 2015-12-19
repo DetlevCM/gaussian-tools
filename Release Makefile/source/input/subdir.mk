@@ -4,17 +4,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../source/main.cpp 
+../source/input/Process_Opt_Data.cpp \
+../source/input/Process_Scan_Data.cpp 
 
 OBJS += \
-./source/main.o 
+./source/input/Process_Opt_Data.o \
+./source/input/Process_Scan_Data.o 
 
 CPP_DEPS += \
-./source/main.d 
+./source/input/Process_Opt_Data.d \
+./source/input/Process_Scan_Data.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-source/%.o: ../source/%.cpp
+source/input/%.o: ../source/input/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
 	g++ -I"X:\workspace\gaussian tools\headers" -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
