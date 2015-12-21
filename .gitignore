@@ -4,6 +4,7 @@ Release/
 Release/*.exe
 Debug/
 Debug/*.exe
+Release Makefile/*.exe
 .cproject
 .project
-.settings/
+.settings/*

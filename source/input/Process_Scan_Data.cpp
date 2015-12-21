@@ -214,9 +214,9 @@ void Process_Scan_Data(vector< OptPoints >& GaussianData, string filename)
 			// Now pick the points we need
 			// 2, 8, 12, 14
 
-			SingleOptPoint.ScanStep = strtod(temp[2].c_str(),NULL);
-			SingleOptPoint.OptStep = strtod(temp[8].c_str(),NULL);
-			SingleOptPoint.OptStepMax = strtod(temp[12].c_str(),NULL);
+			SingleOptPoint.ScanStep = (int) strtod(temp[2].c_str(),NULL);
+			SingleOptPoint.OptStep = (int) strtod(temp[8].c_str(),NULL);
+			SingleOptPoint.OptStepMax = (int) strtod(temp[12].c_str(),NULL);
 			SingleOptPoint.Molecule = SingleMolecule;
 			//SingleOptPoint.Energy = energy;
 

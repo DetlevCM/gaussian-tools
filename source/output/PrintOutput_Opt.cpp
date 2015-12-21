@@ -21,8 +21,8 @@ void PrintOutput_Opt(
 	if (DataOutputFile.is_open())
 	{
 		// How many atom pairs are to be investigated
-		int GaussianDataSize = GaussianData.size();
-		int NumberOfPairs = Selected_Atoms.size();
+		int GaussianDataSize = (int) GaussianData.size();
+		int NumberOfPairs = (int) Selected_Atoms.size();
 		int i, j;
 		string Separator = "";
 

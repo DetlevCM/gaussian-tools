@@ -9,3 +9,8 @@ The code traverses a Gaussian Log File and can return the following values:
 
 For a scan calculation, output is provided at every scan step. For an optimisation every step is ouput.
 IRC calculatons are currently not officially supported but seem to work as well (just don't provide a pretty plot).
+
+Linux Users: Please compile the code using the Eclipse generated Makefiles in "Release Makefile", you need a C++ compiler.
+
+Windows Users: A binary for use with a 64Bit OS is supplied (in "Release Makefile").
+Alternaively you can compile your own using either MinGW or your favourite compiler using the supplied makefiles.
