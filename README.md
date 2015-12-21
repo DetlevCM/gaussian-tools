@@ -13,4 +13,4 @@ IRC calculatons are currently not officially supported but seem to work as well 
 Linux Users: Please compile the code using the Eclipse generated Makefiles in "Release Makefile", you need a C++ compiler.
 
 Windows Users: A binary for use with a 64Bit OS is supplied (in "Release Makefile").
-Alternaively you can compile your own using either MinGW or your favourite compiler using the supplied makefiles.
+Alternatively you can compile your own using either MinGW or your favourite compiler using the supplied makefiles.
