@@ -49,31 +49,15 @@ int main(int argc, char* argv[])
 
 		if(InputIsFilename)
 		{
-			string input_filename;
-			filename = input;
 
-			// check if file ending is included
-			if (filename.find(".log")!=string::npos)
-			{
-				input_filename = filename;
-			}
-			else
-			{
-				input_filename = filename+".log";
-			}
+			string input_filename, output_filename;
 
-			//string input_filename = filename+".log";
+			input_filename = input;
 
-			string output_filename;
+			// variables by reference, hence filenames updated in void
+			Handle_Filenames(input_filename, type, output_filename);
 
-			if(type==0)
-			{
-				output_filename = filename+".csv";
-			}
-			if(type==1)
-			{
-				output_filename = filename+".txt";
-			}
+
 
 			ifstream DataInputFile;
 			DataInputFile.open(input_filename.c_str());
@@ -126,37 +110,39 @@ int main(int argc, char* argv[])
 					 * the output the user desires:
 					 */
 
-					cout << "Enter the atom IDs to be investigated.\n";
-					cout << "e.g. 1 2 'enter' for the distance\n";
-					cout << "e.g. 1 2 3 'enter' for the valence angle on 2\n";
-					cout << "e.g. 1 2 3 4 'enter' for the dihedral angle\n";
-					cout << "Finish the input by submitting 'print'.\n";
+					cout 	<< "Energy is output by default.\n"
+							<< "Enter the atom IDs to be investigated.\n"
+							<< "e.g. 1 2 'enter' for the distance\n"
+							<< "e.g. 1 2 3 'enter' for the valence angle on 2\n"
+							<< "e.g. 1 2 3 4 'enter' for the dihedral angle\n"
+							<< "Finish the input by submitting 'print'.\n";
 
+
+					// Handling user input of atom IDs
 					while(true)
 					{
-						/* struct OutPair {
-						 * 	int Atom1;
-						 * 	int Atom2;
-						 * 	};
-						 */
 
 						getline(cin,input);
 
-						if(strcmp(input.c_str(),"print")==0	|| strcmp(input.c_str(),"p")==0 ) // user wants to print output
+						// user wants to print output, break loop
+						if(input.compare("print") == 0 || input.compare("p") == 0 )
 						{
 							break;
 						}
-						if(strcmp(input.c_str(),"quit")==0) // user wants to quit
+
+						// user wants to quit
+						if(input.compare("quit") == 0)
 						{
 							cout << "Really close program?\n";
 							getline(cin,input);
-							if(strcmp(input.c_str(),"yes")==0) // user wants to quit
+							// verify user really wants to quit
+							if(input.compare("yes") == 0)
 							{
 								return 0;
 							}
 						}
 
-						//OutPair AtomPair;
+						// user isn't quiting, so time to handle the input
 						char * cstr, *p;
 						string str = input;
 						vector< double > temp;
@@ -174,8 +160,8 @@ int main(int argc, char* argv[])
 						delete[] p;
 
 						// strtod is 0 where no valid conversion is possible
-						// Atom number is at least 1
-						if( (int)temp.size() >= 2)// && (int)temp.size <= 3) // switch to 4 to enable dihedral
+						// Atom number must 2 for distance, 3 for valence angle, 4 for dihedral
+						if( (int)temp.size() >= 2 && (int) temp.size() <=4)
 						{
 							bool NoZeroEntry=true;
 							int i;
@@ -196,6 +182,13 @@ int main(int argc, char* argv[])
 								}
 								SelectedAtoms.push_back(AtomPicks);
 								AtomPicks.clear();
+							}
+						}
+						else
+						{
+							if(temp.size() != 0) // zero lenght would mean "just print energies"
+							{
+								cout << "Number of atoms entered is too large or small.\n";
 							}
 						}
 					}

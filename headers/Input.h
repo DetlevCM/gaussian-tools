@@ -9,6 +9,13 @@
 #define HEADERS_INPUT_H_
 
 
+
+void Handle_Filenames(
+		string& ,
+		int ,
+		string&
+);
+
 void Process_Scan_Data(
 		vector< OptPoints >&,
 		string
