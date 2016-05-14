@@ -8,7 +8,7 @@ The code traverses a Gaussian Log File and can return the following values:
 - Dihedral Angle between 4 atoms
 
 For a scan calculation, output is provided at every scan step. For an optimisation every step is ouput.
-IRC calculatons are currently not officially supported but seem to work as well (just don't provide a pretty plot).
+IRC calculations are currently not officially supported but seem to work as well (just don't provide a pretty plot).
 
 Linux Users: Please compile the code using the Eclipse generated Makefiles in "Release Makefile", you need a C++ compiler.
 
